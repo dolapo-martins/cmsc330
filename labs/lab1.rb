@@ -1,21 +1,22 @@
-# Exercise 1
-# Write a Stack class which is backed by a Ruby array and defines the Push and Pop operations. The skeleton is provided here:
-
+#Dolapo A. Martins | Lab 1 - CMSC 330
+#Exercise 1
 class Stack
+	@stack
 	def initialize
 		@stack = []
 	end
-
+	
 	def push(ele)
-
+		@stack.push(ele)
 	end
-
+	
 	def pop
-
+		@stack.pop
 	end
 end
 
-# Test with the following operations:
+#Test
+puts "Exercise 1"
 s = Stack.new
 s.push(1)
 s.push(2)
@@ -23,61 +24,96 @@ s.push(3)
 puts s.pop
 puts s.pop
 puts s.pop
+puts
 
-# Exercise 2
-# Write a Queue class which is backed by a Ruby array and defines the enqueue and dequeue operations. Provide some small test code to prove that it works.
+#Exercise 2
+class Queue
+	@queue
+	def initialize
+		@queue = []
+	end
+	
+	def enqueue(ele)
+		@queue.push(ele)
+	end
+	
+	def dequeue
+		@queue.shift
+	end
+end
 
-# Exercise 3
-# Create an array called "ary" which is populated either by using the unshift operation, the [] constructor, or Array.new.
-# You may populate the list with whatever you like.
+#Test
+puts "Exercise 2"
+q = Queue.new
+q.enqueue(1)
+q.enqueue(2)
+q.enqueue(3)
+puts q.dequeue
+puts q.dequeue
+puts q.dequeue
+puts
 
-# Use the Ruby online documentation to:
-# Get the first 3 items from ary
-# Create a random permutation of ary
-# Sort ary
-# Find a specific member of ary.
-# Note: You may find that there are many different ways to accomplish these tasks. 
-# Try to make sure you're finding the most succint solution that is still readable by people familiar with Ruby.
+#Exercise 3
+puts "Exercise 3"
+ary = [5, 11, -8, 3.9, 0]
+ary.unshift(13)
+puts ary[0..2]
+puts
+puts ary.permutation(ary.length).to_a.sample(1)
+puts
+puts ary.sort
+puts
+puts ary.include?(5)
+puts ary.index(3)
 
-# Exercise 4
-# Create a hash table called "h" which is populated either by using [] and =, the {} constructor, or Hash.new
-# Note: Array.new and Hash.new act pretty differently. If you have time, look them up and compare and contrast them.
+#Exercise 4
+puts "Exercise 4"
+h = Hash.new
+h = {"Stacy": 10, "Jim": 9, "Fred": 8}
+puts h.to_a.to_s
+puts h.keys.to_s
+puts h.values.to_s
+puts h.has_key?("Stacy")
+puts
 
-# Use the Ruby online documentation to:
-# Convert h to an array
-# Get all of the keys and values of h
-# Test if an object is a member of h
+#Exercise 5
+puts "Exercise 5"
+for i in 0..ary.size()
+	puts ary[i]
+end
+puts
+ary.size().times() do |ele|
+	puts ary[ele]
+end
+puts
+ary.each { |ele|
+	puts ele
+}
+puts 
 
-# Exercise 5
-# Iterate over ary using 3 methods:
-# for i in 0..ary.size()
-# ary.size().times() do
-# ary.each {} (i.e. with a code block)
-# Note: .each with a code block is the preferred style for rubyists
+#Exercise 6
+puts "Exercise 6"
+h.each { |k, v|
+	print k, " => ", v
+	puts
+}
+puts
+@keys = h.keys
+@values = h.values
+puts @keys
+puts
+puts @values
+puts
 
-# Exercise 6
-# Iterate over h using the .each with code block method. Is it possible to get seperate local variables for the keys and values?
-
-# Exercise 7
-# Get comfortable with code blocks! Blocks are functions which disguise themselves as {}'s.
-# You can use them in a variety of powerful and expressive ways in Ruby.
-# Let's start with a function called map that you're going to be seeing a lot of this semester:
-
-# ary2 = [1,2,3]
-# ary2.map { |x|
-#   x * 2
-# }
-
-# Write a function which takes ary3 and appends your name to each string
-
+#Exercise 7
+puts "Exercise 7"
 ary3 = ["Hello, ", "Hi, ", "What's up, "]
-
-# Another cool function is .select. Given a code block which returns a boolean, select returns a list
-# of only the elements which evaluate to true.
-
-# ary2.select {
-#    x % 2 == 0
-# }
-
-# Create a list and a predicate of your choosing and see if you can create an interesting transformation
-# using just select and a code block.
+ary3.each { |str|
+	str += "Dolapo"
+	puts str
+}
+puts 
+my_array = [4, 8, 12, 16, 3, 9, 12, 15]
+puts my_array.select { |x|
+	x % 3 == 0
+}

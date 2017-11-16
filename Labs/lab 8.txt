@@ -1,0 +1,92 @@
+Exercise 1 - First Sets
+Given the following grammar, construct the first set for each symbol:
+
+P -> ES
+ES -> E; ES | E;
+E -> T D | D := v | epsilon
+T -> int | bool
+D -> x | y
+
+Example of a program:
+int x;
+bool y;
+x := 4;
+y := false
+
+First(int):
+First(bool):
+First(id):
+First(:):
+First(=):
+First(v):
+First(E): {int, bool, x, y, epsilon}
+First(ES):{int, bool, x, y, epsilon}
+First(D): {x, y}
+First(T): {int, bool}
+First(P): {int, bool, x, y, epsilon}
+
+S -> aA
+A -> BCB
+B -> b
+C -> cC | epsilon
+
+First(S): {a}
+First(A): {b}
+First(B): {b}
+First(C): {c, epsilon}
+
+Exercise 2 - Parsing
+Given the following grammar, fill in the following skeleton code for a recursive descent parser:
+
+S -> baS | pSq | q
+
+parse_P
+   if (lookahead == b) {
+      match(b);
+      match(a);
+      parse_S();
+   }
+   Else if (lookahead == p) {
+      match(p);
+      parse_S();
+      match(q);
+   }
+   Else if (lookahead == q) {
+      match(q);
+   }
+   Else error();
+}
+
+Exercise 3 - Operational Semantics
+
+Given the rules:
+
+---------------
+n < n -> n < n  // Remember, left of the -> is lexical tokens, right is mathematical operations.
+                // That is to say, we evaluate < when it appears in the language :)
+------
+n -> n
+
+   n1 < n2 -> true e1 -> v1
+---------------------------------
+if n1 < n2 then e1 else e2 -> v1 
+
+   n1 < n2 -> false e2 -> v2
+---------------------------------
+if n1 < n2 then e1 else e2 -> v2
+
+Deduce the following expressions by explicitly writing out the natural deductions:
+
+
+   4 -> 4   2 -> 2
+--------------------
+ 2 < 4 -> true 3 -> 3
+---------------------------------
+if 2 < 4 then 3 else 5 -> 3 -> 3
+
+
+   2 -> 2   4 -> 4
+--------------------
+ 4 < 2 -> false 5 -> 5
+---------------------------------
+if 4 < 2 then 3 else 5 -> 5 -> 5

@@ -1,0 +1,11 @@
+---
+name: public_parse_while
+resources:
+- while.c
+local_resources:
+- smallc.ml
+- parser.ml
+- prettyprint.ml
+- Makefile
+modules:
+  module0: ocaml parser.ml while.c

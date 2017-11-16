@@ -1,0 +1,11 @@
+# Submit server .submit file for
+#  Course CMSC330
+#  Project 2a: OCaml Warmup 1
+
+courseName=CMSC330
+semester=201608
+projectNumber=2a
+courseKey=41f4bb63c182c484
+authentication.type=ldap
+baseURL=https://submit.cs.umd.edu:443/fall2016
+submitURL=https://submit.cs.umd.edu:443/fall2016/eclipse/SubmitProjectViaEclipse

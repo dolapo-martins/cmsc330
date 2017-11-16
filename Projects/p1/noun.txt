@@ -1,0 +1,97 @@
+The ele is a
+0
+["a"]
+
+1
+["b"]
+a 	 false
+
+2
+["c"]
+a 	 false
+
+3
+["d", "e"]
+a 	 false
+
+4
+["f"]
+a 	 false
+
+5
+["g"]
+a 	 false
+
+6
+["e"]
+a 	 false
+
+7
+["h"]
+a 	 false
+
+The ele is f
+0
+["a"]
+f 	 false
+
+1
+["b"]
+f 	 false
+
+2
+["c"]
+f 	 false
+
+3
+["d", "e"]
+f 	 false
+
+4
+["f"]
+
+5
+["g"]
+f 	 false
+
+6
+["e"]
+f 	 false
+
+7
+["h"]
+f 	 false
+
+The ele is h
+0
+["a"]
+h 	 false
+
+1
+["b"]
+h 	 false
+
+2
+["c"]
+h 	 false
+
+3
+["d", "e"]
+h 	 false
+
+4
+["f"]
+h 	 false
+
+5
+["g"]
+h 	 false
+
+6
+["e"]
+h 	 false
+
+7
+["h"]
+
+a f h 

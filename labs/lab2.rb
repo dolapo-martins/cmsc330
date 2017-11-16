@@ -1,80 +1,57 @@
-# Exercise 1
-# Code Blocks and Arrays
-# By now you should be pretty adept at using code blocks. Still, here's some warm-up
-# problems which are a little more challenging than last week's.
-# As usual, consult Ruby documentation and ask your TA/neighbor for help
-
-# Given ary, use the method delete_if to modify it to remove all the strings of even length.
-# Afterwards, use the method sort_by to sort the remaining strings by comparing their final characters
-# Try to create the most elegant "rubyist" solution you can!
+#Exercise 1
 ary = ["Adam", "Austin", "Damien", "Anwar", "Craig"]
+ary.delete_if { |ele|
+	(ele.length) % 2 == 0
+}
 
-# Given power_levels, use the method select! to modify it to contain only key,value pairs where the
-# keys are of shorter lengths than the values
-power_levels = { "Damien" => "2",
-                 "Austin" => "3",
-                 "Anwar" => "400000",
-                 "Adam" => "Unlimited" }
+ary.sort_by { |ch|
+	ch[-1]
+}
 
-# Exercise 2
-# Regular Expression Warm-up
-# For the following exercises, familiarize yourself with Ruby's regex syntax. Use the symbols
-# *, |, ?, +, and ()'s as necessary.
-# The following regex matches the word "grey" Modify it to match the alternate spelling "gray"
+power_levels = { "Damien" => "2", 
+				"Austin" => "3", 
+				"Anwar" => "400000", 
+				"Adam" => "Unlimited"}
+				
+power_levels.select! { |k,v|
+	k.length < v.length
+}
 
-r = /^grey$/
+#Exercise 2
+r = /^gr[ae]y$/
 "grey" =~ r
 "gray" =~ r
 
-# Write a regex which matches the words "color" and "colour"
-
-r = //
+r = /^colo[u]?r$/
 "color" =~ r
 "colour" =~ r
 
-# Write a regex which matches 1 or more "na"'s before ", Batman!"
-
-r = //
+r = /^(?:na)+, Batman!$/ #don't want/ need capture groups
 "nana, Batman!" =~ r
 "nananana, Batman!" =~ r
 "na, Batman!" =~ r
 
-# Exercise 3
-# Code Blocks and Yield
-# The following class represents a traveller who has a small group of cities they can reach.
-# Define the method travel, which takes an argument "from".
-# If no block is given to travel, the method should not do anything.
-# If a block is given, the method should loop through all of the cities adjacent to "from" in the
-# hash table, and for each adjacent city, yield to the block the value for "from" and the adjacent city
-
+#Exercise 3
 class Traveller
-   @@cities = { "detroit" => ["cleveland", "columbus"],
+	@@cities = { "detroit" => ["cleveland", "columbus"],
                 "chicago" => ["columbus", "indianapolis"],
                 "columbus" => ["detroit", "cincinnati"] }
 
    def travel(from)
-      raise NotImplementedError
+	@@cities[from].each { |v|
+      yield from, v
+	 }
    end
 end
 
 t = Traveller.new
 t.travel("detroit") { |from, dest| puts "#{dest} is reachable from #{from}" }
 
-# Exercise 4
-# Mixins
-# Below is the return of the venerable Stack datastructure. However, this time we want the ability
-# to enumerate and compare stacks. Using the ruby documentation for the Enumerable and Comparable modules
-# and mixins, implement the missing functionalities.
-# We want to:
-# * Iterate through Stack elements using a code block
-# * Compare stacks based on size. If two stacks are equal, you should do an element by element comparison
-# * If all the elements are equal, then the stacks are equal.
-# NOTE: Since ruby variables are always private, you'll need to find a way to make @s accessible.
-
+#Exercise 4
 class Stack
    include Enumerable
    include Comparable
-
+	attr_accessor :s
    def initialize
       @s = []
    end
@@ -85,8 +62,29 @@ class Stack
 
    def pop(ele)
       @s.pop(ele)
-   end
+   end   
+   
+   def each(&block)
+	  @s.each(&block)
+	end
+	
+	def <=>(other)
+	
+		if (@s.size == other.s.size) then
+			@s.each { |x|
+				x == other.s[@s.index(x)]
+			}
+		else
+			@s.size <=> other.s.size
+		end
+		
+		
+	end
+	
 end
+
+puts
+puts
 
 s1 = Stack.new
 s2 = Stack.new

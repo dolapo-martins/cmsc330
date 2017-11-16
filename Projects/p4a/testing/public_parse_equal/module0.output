@@ -1,0 +1,1 @@
+Fun(Type_Int,"main",List[],List[Assign(Id "a",Sum(Id "a",Sum(Mult(Id "b",Paren(Sum(Pow(Paren(Sum(Id "c",Id "e")),Id "f"),Id "d"))),Mult(Pow(Num 6,Num 4),Num 5))))])

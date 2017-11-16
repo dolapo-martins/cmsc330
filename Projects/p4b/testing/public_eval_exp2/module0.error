@@ -1,0 +1,5 @@
+File "evaluate.ml", line 31, characters 1-818:
+Warning 8: this pattern-matching is not exhaustive.
+Here is an example of a value that is not matched:
+(Num _|List _|Fun (_, _, _, _)|Sum (_, _)|Greater (_, _)|Equal (_, _)|
+Less (_, _)|Mult (_, _)|Pow (_, _)|Paren _)::_

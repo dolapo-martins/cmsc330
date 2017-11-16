@@ -1,0 +1,11 @@
+---
+name: public_parse_ifelse
+resources:
+- ifelse.c
+local_resources:
+- smallc.ml
+- parser.ml
+- prettyprint.ml
+- Makefile
+modules:
+  module0: ocaml parser.ml ifelse.c

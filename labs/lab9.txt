@@ -3,44 +3,50 @@ Given the following Lambda calculus expressions, identify the free and bound var
 
 (\x. x y) a b
 
-Free:
-Bound:
+Free: a b
+Bound: x y 
 
 (\x. x y) x y
 
-Free:
-Bound:
+Free: outside x y
+Bound: inner x y
 
 (\x. (\y.x) y) a b
 
-Free:
-Bound:
+Free: a b
+Bound: x y
 
 (\x.\y.\z. a x y)
 
-Free:
-Bound:
+Free: a
+Bound: x y
 
 Exercise 2: Normalizing Lambda Calculus Expressions
 Reduce the following expressions to their normal forms.
 
 1.
 (\x.\y.\z x y y) a b c
+a b b
 
 2.
 (\x.\y.\z x y y) x y z
+x y y
 
 3.
 (\x. x x) (\x. x x)
+infinite loop
 
 4.
 x y (\x.\y.\z. a b x) x y
+x y (\z. a b x)
 
 5.
 (\x.\y. x (\z. x z) y)
+already in normal form
 
 6.
 (\x.\y. x (\z. x z) y) a b
+a a b
 
 Exercise 3: Church Encoding
 
@@ -52,3 +58,8 @@ successor - (\z.\f.\y.f (z f y))
 Reduce successor of 0 to arrive at the encoding for numeral 1.
 
 (\z.\f.\y.f (z f y)) (\f.\y.y)
+(\b.\c.\d.c (b c d)) (\f.\y.y) - alpha conversion
+\c.\d.c ((\f.\y.y) c d))		- beta reduce
+\c.\d.c (d)						- beta reduce
+\f.\y.f y						- alpha conversion (is this necessary)
+- same as 1
